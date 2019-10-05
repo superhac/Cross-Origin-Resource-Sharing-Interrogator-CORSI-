@@ -25,11 +25,6 @@ var access_control_request_method = flag.String("acrm", "GET", "The access_contr
 var outAllHeaders = flag.Bool("outAllHeaders", false, "Will output all headers from response")
 var insecureSSL = flag.Bool("insecureSSL", false, "Ignore SSL errors.  E.g. certificate signed by unknown authority")
 
-type ReqHeaders struct {
-	name  string
-	value string
-}
-
 //terminal escape codes
 const (
 	ESC_clearToEndOfLine = "\033[K"
@@ -41,6 +36,11 @@ const (
 	ESC_green            = "\033[0;32m"
 	ESC_blueUnderline    = "\033[4;34m"
 )
+
+type ReqHeaders struct {
+	name  string
+	value string
+}
 
 func checkCORS(reqUrl string, method string, reqHeaders map[string]string, redirects *[]string) (http.Header, error) {
 	var client *http.Client
