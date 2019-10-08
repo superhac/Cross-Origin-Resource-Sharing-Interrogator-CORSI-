@@ -20,6 +20,9 @@ Usage: cori [OPTION]... [url]
     	Arbitrary subdomain use in "Origin" header.  "test" would be test.example.com (default "test")
   -useragent string
     	User agent string (default "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.85 Safari/537.36")
+  -useragentrandom
+    	Use random useragent string for requests
+
       </pre>
 ### Example Output
 <pre>
