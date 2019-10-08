@@ -11,9 +11,26 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"math/rand"
+	"time"
 )
 
 var version = "1.0"
+
+// agent strings
+
+var userAgentStrings = [...]string {
+	"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1",
+	"Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0",
+	"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0",
+	"Mozilla/5.0 (X11; Linux i586; rv:31.0) Gecko/20100101 Firefox/31.0",
+	"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36",
+	"Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2225.0 Safari/537.36",
+	"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2225.0 Safari/537.36",
+	"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)",
+	"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)",
+	"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)",
+}
 
 //flags
 var userAgent = flag.String("useragent", `Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.85 Safari/537.36`, "User agent string")
@@ -24,6 +41,7 @@ var preDomainPad = flag.String("preDomainPad", "realevil", `Prepended to domain 
 var access_control_request_method = flag.String("acrm", "GET", "The access_control_request_method values")
 var outAllHeaders = flag.Bool("outAllHeaders", false, "Will output all headers from response")
 var insecureSSL = flag.Bool("insecureSSL", false, "Ignore SSL errors.  E.g. certificate signed by unknown authority")
+var useragentrandom = flag.Bool("useragentrandom", false, "Use random useragent string for requests")
 
 //terminal escape codes
 const (
@@ -385,6 +403,14 @@ func main() {
 
 	fmt.Println("\nCross-Origin Resource Sharing Interrogator (CORSI) v" + version + " by Superhac\n")
 	fmt.Println("Testing URL: " + reqUrl)
+
+  // is randomAgent set?
+	if *useragentrandom {
+		rand.Seed(time.Now().UnixNano())
+		seed := rand.Intn(len(userAgentStrings))
+    *userAgent = userAgentStrings[seed]
+		fmt.Println("useragent: "+*userAgent)
+	}
 
 	//start running tests
 	corsHttpOrigin(reqUrl, &redirects)
