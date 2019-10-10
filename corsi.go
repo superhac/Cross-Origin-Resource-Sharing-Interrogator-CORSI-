@@ -18,7 +18,6 @@ import (
 var version = "1.0"
 
 // agent strings
-
 var userAgentStrings = [...]string {
 	"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1",
 	"Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0",
