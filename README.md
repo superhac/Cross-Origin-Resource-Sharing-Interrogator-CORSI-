@@ -81,3 +81,5 @@ Testing URL: https://www.examplesite.com
 
 ### References
 [W3C Cross-Origin Resource Sharing Specification](https://www.w3.org/TR/cors/)
+[CORS - What is the motivation behind introducing preflight requests?](https://stackoverflow.com/questions/15381105/cors-what-is-the-motivation-behind-introducing-preflight-requests)
+
