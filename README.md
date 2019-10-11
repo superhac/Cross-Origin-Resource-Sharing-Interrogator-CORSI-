@@ -19,6 +19,8 @@ Conditions that activate a preflight request:
 The OPTION method.
 
 
+You might be asking why you need to do a preflight request when the Same Origin Policy (SOP) would protect you from cross domain requests.  Thats a good question, and personally I still don't understand why, but there is a lengthy writeup on this exact subject over at [StackOverflow](https://stackoverflow.com/questions/15381105/cors-what-is-the-motivation-behind-introducing-preflight-requests) if your interested. 
+
 
 ### Help
 <pre>
