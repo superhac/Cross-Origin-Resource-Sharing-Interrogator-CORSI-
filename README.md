@@ -80,4 +80,4 @@ Testing URL: https://www.examplesite.com
 </pre>
 
 ### References
-[W3C Cross-Origin Resource Sharing Specification] (https://www.w3.org/TR/cors/)
+[W3C Cross-Origin Resource Sharing Specification](https://www.w3.org/TR/cors/)
